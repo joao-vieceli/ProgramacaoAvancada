@@ -17,11 +17,22 @@ public class BancoObjetos {
    
   
    System.out.println(conta1.toString());
+   System.out.println("=========================");
    System.out.println(conta2.toString());
-   conta1.saque(500);
    
+   //Saque
+   conta1.saque(500);
+   //Saque
+   
+   System.out.println("=========================");
+   
+   //Transferência entre contas
    conta1.transferencia(300, conta2);
+   //Transferência entre contas
+   
+   
    System.out.println(conta1.toString());
+   System.out.println("=========================");
    System.out.println(conta2.toString());
    //outro Jeito
    //conta1.setSaldo(900);

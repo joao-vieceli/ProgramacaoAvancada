@@ -1,7 +1,10 @@
 package Aula2;
+import Ferramentas.CaixaDeDialogo;
 
 public class InterfaceDoBanco extends javax.swing.JFrame {
  Conta conta1,conta2;
+ 
+
     public InterfaceDoBanco() {
         initComponents();
         
@@ -18,11 +21,16 @@ public class InterfaceDoBanco extends javax.swing.JFrame {
    conta2.setNome("Marcos");
    conta2.setSaldo(300);
    
-   lblUm.setText(conta1.getNome());
+   AtualizarTela();
+    }
+    
+    public void AtualizarTela(){
+lblUm.setText(conta1.getNome());
    lblTres.setText(conta2.getNome());
    lblSaldo.setText(String.valueOf(conta1.getSaldo()));
    lblSaldo2.setText(String.valueOf(conta2.getSaldo()));
-    }
+
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -182,7 +190,8 @@ public class InterfaceDoBanco extends javax.swing.JFrame {
         
         float valorFinal = valor - valorSacar;
          conta1.setSaldo(valorFinal);
-        lblSaldo.setText(String.valueOf(valorFinal));
+        AtualizarTela();
+        CaixaDeDialogo.obterinstancia().exibirMensagem("Operação Concluída");
         
         
     }//GEN-LAST:event_btnSacarActionPerformed
@@ -194,7 +203,8 @@ public class InterfaceDoBanco extends javax.swing.JFrame {
         
         float valorFinal = valor + valorDepositar;
         conta1.setSaldo(valorFinal);
-        lblSaldo.setText(String.valueOf(valorFinal));
+       AtualizarTela();
+       CaixaDeDialogo.obterinstancia().exibirMensagem("Operação Concluída");
         
         
     }//GEN-LAST:event_btnDepositarActionPerformed
@@ -203,9 +213,8 @@ public class InterfaceDoBanco extends javax.swing.JFrame {
     
         float valorTransferencia = Float.parseFloat(jtxDinheiro.getText());
         conta1.transferencia(valorTransferencia, conta2);
-        lblSaldo.setText(String.valueOf(conta1.getSaldo()));
-   lblSaldo2.setText(String.valueOf(conta2.getSaldo()));
-        
+       AtualizarTela();
+        CaixaDeDialogo.obterinstancia().exibirMensagem("Operação Concluída");
     }//GEN-LAST:event_btnTransferirActionPerformed
 
     private void btnTransferir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferir2ActionPerformed
@@ -213,8 +222,8 @@ public class InterfaceDoBanco extends javax.swing.JFrame {
         conta2.transferencia(valorTransferencia, conta1);
         
         
-        lblSaldo.setText(String.valueOf(conta1.getSaldo()));
-   lblSaldo2.setText(String.valueOf(conta2.getSaldo()));
+        AtualizarTela();
+        CaixaDeDialogo.obterinstancia().exibirMensagem("Operação Concluída");
     }//GEN-LAST:event_btnTransferir2ActionPerformed
 
     private void btnSacar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacar1ActionPerformed
@@ -222,8 +231,9 @@ public class InterfaceDoBanco extends javax.swing.JFrame {
         float valorSacar = Float.parseFloat(jtxDinheiro2.getText());
         
         float valorFinal = valor - valorSacar;
-        
-        lblSaldo2.setText(String.valueOf(valorFinal));
+        conta2.setSaldo(valorFinal);
+        AtualizarTela();
+        CaixaDeDialogo.obterinstancia().exibirMensagem("Operação Concluída");
     }//GEN-LAST:event_btnSacar1ActionPerformed
 
     private void btnDepositar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositar1ActionPerformed
@@ -232,7 +242,8 @@ public class InterfaceDoBanco extends javax.swing.JFrame {
         
         float valorFinal = valor + valorDepositar;
         conta2.setSaldo(valorFinal);
-        lblSaldo2.setText(String.valueOf(valorFinal));
+        AtualizarTela();
+        CaixaDeDialogo.obterinstancia().exibirMensagem("Operação Concluída");
         
     }//GEN-LAST:event_btnDepositar1ActionPerformed
 
